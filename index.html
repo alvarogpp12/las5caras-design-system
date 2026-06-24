@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Las 5 caras del día — Design System</title>
+<link rel="stylesheet" href="brand/brand.css">
+<style>
+  body{ background:#0D0D0D; color:#fff; font-family:var(--f-text); padding:48px; }
+  header{ display:flex; flex-direction:column; gap:14px; margin-bottom:48px; }
+  header img{ width:420px; }
+  header .tag{ font-family:var(--f-display); text-transform:uppercase; color:var(--c-yellow); font-size:34px; }
+  header p{ color:var(--c-muted); max-width:680px; line-height:1.5; }
+  h2{ font-family:var(--f-display); text-transform:uppercase; font-size:30px; margin:48px 0 20px; color:#fff; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:28px; }
+  .card{ background:var(--c-surface); border:1px solid var(--c-line); border-radius:18px; overflow:hidden; }
+  .frame{ overflow:hidden; background:#222; border-bottom:1px solid var(--c-line); }
+  .frame iframe{ border:0; transform-origin:top left; pointer-events:none; }
+  .card .meta{ padding:16px 18px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .card .meta b{ font-family:var(--f-label); font-weight:800; font-size:15px; letter-spacing:.02em; }
+  .card .meta small{ color:var(--c-muted); font-size:12px; }
+  .card a.open{ font-family:var(--f-label); font-weight:800; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+     color:#0D0D0D; background:var(--c-yellow); padding:8px 12px; border-radius:999px; text-decoration:none; white-space:nowrap; }
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo/logo.svg" alt="Las 5 caras del día">
+  <div class="tag">Noticias rápidas. Resumidas. Sin rollos.</div>
+  <p>Design system y plantillas para redes. Cada pieza está a tamaño nativo y con campos editables
+  (foto, titular, subtítulo, fecha, categoría) listos para llevar a Canva. Abre el manual en
+  <a href="brand/MANUAL.md" style="color:var(--c-yellow)">brand/MANUAL.md</a>.</p>
+</header>
+
+<h2>Carrusel diario</h2>
+<div class="grid">
+  <div class="card">
+    <div class="frame" style="width:280px;height:350px">
+      <iframe src="templates/carrusel/index.html" width="1080" height="1350" style="transform:scale(0.2593)"></iframe>
+    </div>
+    <div class="meta"><div><b>Portada + 5 noticias</b><br><small>1080×1350 · 6 páginas</small></div>
+      <a class="open" href="templates/carrusel/index.html" target="_blank">Abrir</a></div>
+  </div>
+</div>
+
+<h2>Portadas de reel · 8 categorías</h2>
+<div class="grid" id="reels"></div>
+
+<h2>YouTube</h2>
+<div class="grid">
+  <div class="card">
+    <div class="frame" style="width:280px;height:157px">
+      <iframe src="templates/youtube/thumbnail.html" width="1280" height="720" style="transform:scale(0.21875)"></iframe>
+    </div>
+    <div class="meta"><div><b>Miniatura</b><br><small>1280×720</small></div>
+      <a class="open" href="templates/youtube/thumbnail.html" target="_blank">Abrir</a></div>
+  </div>
+  <div class="card">
+    <div class="frame" style="width:280px;height:157px">
+      <iframe src="templates/youtube/banner.html" width="2560" height="1440" style="transform:scale(0.109375)"></iframe>
+    </div>
+    <div class="meta"><div><b>Banner de canal</b><br><small>2560×1440</small></div>
+      <a class="open" href="templates/youtube/banner.html" target="_blank">Abrir</a></div>
+  </div>
+</div>
+
+<h2>Recursos gráficos</h2>
+<div class="grid">
+  <div class="card">
+    <div class="frame" style="width:280px;height:200px">
+      <iframe src="templates/recursos/index.html" width="1200" height="857" style="transform:scale(0.2333)"></iframe>
+    </div>
+    <div class="meta"><div><b>Etiquetas · banners · indicadores · rótulos</b></div>
+      <a class="open" href="templates/recursos/index.html" target="_blank">Abrir</a></div>
+  </div>
+</div>
+
+<script>
+  const cats = [
+    ['ultima-hora','Última hora'],['exclusiva','Exclusiva'],['trending','Trending'],['deportes','Deportes'],
+    ['musica','Música'],['television','Televisión'],['famosos','Famosos'],['viral','Viral']
+  ];
+  document.getElementById('reels').innerHTML = cats.map(([s,l])=>`
+    <div class="card">
+      <div class="frame" style="width:280px;height:498px">
+        <iframe src="templates/reels/${s}.html" width="1080" height="1920" style="transform:scale(0.2593)"></iframe>
+      </div>
+      <div class="meta"><div><b>${l}</b><br><small>1080×1920</small></div>
+        <a class="open" href="templates/reels/${s}.html" target="_blank">Abrir</a></div>
+    </div>`).join('');
+</script>
+</body>
+</html>

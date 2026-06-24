@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" role="img" aria-label="Televisión">
+  <path d="M44 26 22 12a5 5 0 0 0-6 8l13 9H24a8 8 0 0 0-8 8v37a8 8 0 0 0 8 8h52a8 8 0 0 0 8-8V37a8 8 0 0 0-8-8H61l13-9a5 5 0 0 0-6-8L46 26z"/>
+  <rect x="24" y="40" width="44" height="32" rx="3" fill="#000" opacity="0"/>
+</svg>

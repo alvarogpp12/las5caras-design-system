@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Miniatura YouTube — Las 5 caras del día</title>
+<link rel="stylesheet" href="../../brand/brand.css">
+<style>
+  .yt { background:#0D0D0D; }
+  /* Foto a la derecha */
+  .yt .photo-ph { position:absolute; top:0; bottom:0; right:0; left:52%;
+     background:linear-gradient(160deg,#2b2b2b,#141414); display:flex; align-items:center; justify-content:center;
+     font-family:var(--f-label); font-weight:800; color:#4f4f4f; font-size:48px; }
+  .yt .side-scrim { position:absolute; inset:0; background:linear-gradient(90deg,#0D0D0D 44%,rgba(13,13,13,0) 66%); }
+  .yt .logo { position:absolute; top:40px; left:48px; width:280px; height:auto; }
+  .yt .pad { position:absolute; left:48px; right:50%; top:170px; }
+  .yt .badge { font-size:26px; margin-bottom:22px; }
+  .yt .headline { font-size:104px; line-height:.9; color:#fff; }
+  .yt .headline b { color:var(--c-yellow); }
+  /* Flecha/acento de impacto */
+  .yt .accent { position:absolute; right:46%; bottom:60px; width:120px; height:120px; border-radius:50%;
+     background:var(--c-yellow); display:flex; align-items:center; justify-content:center; transform:rotate(-8deg);
+     box-shadow:0 10px 30px rgba(0,0,0,.5); }
+  .yt .accent svg { width:64px; height:64px; color:#0D0D0D; }
+</style>
+</head>
+<body>
+<section class="canvas canvas--yt yt" data-document-role="page" data-label="Miniatura YouTube">
+  <div class="photo-ph">FOTO</div>
+  <div class="photo" data-field="foto" style="display:none"></div>
+  <div class="side-scrim"></div>
+  <img class="logo" src="../../assets/logo/logo.svg" alt="Las 5 caras del día">
+  <div class="pad">
+    <span class="badge" data-cat="ultima-hora" data-field="categoria">ÚLTIMA HORA</span>
+    <h1 class="headline" data-field="titular">LO QUE <b>NADIE</b> TE HA CONTADO</h1>
+  </div>
+  <div class="accent">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recursos gráficos — Las 5 caras del día</title>
+<style>
+/* =====================================================================
+   LAS 5 CARAS DEL DÍA — Sistema de marca (CSS base)
+   Noticias rápidas. Resumidas. Sin rollos.
+   Importa este archivo en cualquier plantilla para heredar la marca.
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@600;700;800;900&display=swap');
+
+:root {
+  /* --- Color de marca --- */
+  --c-yellow:      #FFE000;
+  --c-yellow-deep: #FFC400;
+  --c-black:       #0D0D0D;
+  --c-pure-black:  #000000;
+  --c-white:       #FFFFFF;
+
+  /* --- Neutros --- */
+  --c-surface:  #141414;
+  --c-surface-2:#1F1F1F;
+  --c-line:     #2B2B2B;
+  --c-muted:    #B3B3B3;
+
+  /* --- Acentos por categoría --- */
+  --cat-ultima-hora: #FF2D2D;
+  --cat-exclusiva:   #FFE000;
+  --cat-trending:    #FF2E88;
+  --cat-deportes:    #00C24A;
+  --cat-musica:      #8B5CF6;
+  --cat-television:  #2E8BFF;
+  --cat-famosos:     #FF7A00;
+  --cat-viral:       #FF4D00;
+
+  /* --- Tipografía --- */
+  --f-display: 'Anton', 'Archivo Black', Impact, sans-serif;
+  --f-text:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --f-label:   'Montserrat', 'Inter', sans-serif;
+
+  /* --- Forma --- */
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-pill: 999px;
+
+  /* --- Efectos --- */
+  --scrim: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.65) 32%, rgba(0,0,0,0) 62%);
+  --shadow-text: 0 2px 8px rgba(0,0,0,.55);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { background: #555; }
+
+/* =====================================================================
+   LIENZO — cada plantilla vive dentro de .canvas con un tamaño nativo
+   ===================================================================== */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-black);
+  color: var(--c-white);
+  font-family: var(--f-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+.canvas--carousel { width: 1080px; height: 1350px; }
+.canvas--reel     { width: 1080px; height: 1920px; }
+.canvas--square   { width: 1080px; height: 1080px; }
+.canvas--yt       { width: 1280px; height: 720px; }
+.canvas--banner   { width: 2560px; height: 1440px; }
+
+/* =====================================================================
+   FOTOGRAFÍA (campo editable: data-field="foto")
+   ===================================================================== */
+.photo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  background-repeat: no-repeat;
+}
+.photo--top { background-position: center top; }
+.scrim { position: absolute; inset: 0; background: var(--scrim); pointer-events: none; }
+.scrim--full { background: linear-gradient(to top, rgba(0,0,0,.94) 8%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.55) 100%); }
+
+/* =====================================================================
+   TIPOGRAFÍA DE IMPACTO
+   ===================================================================== */
+.kicker {                 /* etiqueta corta sobre el titular */
+  font-family: var(--f-label);
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.headline {               /* TITULAR (campo: data-field="titular") */
+  font-family: var(--f-display);
+  font-weight: 400;       /* Anton ya es black */
+  line-height: .96;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+}
+.headline--tight { line-height: .9; }
+.subhead {                /* SUBTÍTULO (campo: data-field="subtitulo") */
+  font-family: var(--f-text);
+  font-weight: 500;
+  line-height: 1.28;
+  color: #EDEDED;
+}
+.date {                   /* FECHA (campo: data-field="fecha") */
+  font-family: var(--f-label);
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.text-shadow { text-shadow: var(--shadow-text); }
+.hl-yellow { color: var(--c-yellow); }
+.hl-black  { color: var(--c-black); }
+
+/* =====================================================================
+   BADGE / ETIQUETA DE CATEGORÍA  (recurso gráfico)
+   Uso: <span class="badge" data-cat="deportes">DEPORTES</span>
+   Por defecto = amarillo/negro (convención de marca). data-cat tiñe el fondo.
+   ===================================================================== */
+.badge {
+  display: inline-flex; align-items: center; gap: .5em;
+  font-family: var(--f-label);
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-black);
+  background: var(--c-yellow);
+  padding: .5em 1em;
+  border-radius: var(--r-pill);
+  line-height: 1;
+  white-space: nowrap;
+}
+.badge--square { border-radius: var(--r-sm); }
+.badge--outline { background: transparent; color: var(--c-yellow); box-shadow: inset 0 0 0 3px var(--c-yellow); }
+
+.badge[data-cat="ultima-hora"] { background: var(--cat-ultima-hora); color: #fff; }
+.badge[data-cat="exclusiva"]   { background: var(--cat-exclusiva);   color: var(--c-black); }
+.badge[data-cat="trending"]    { background: var(--cat-trending);    color: #fff; }
+.badge[data-cat="deportes"]    { background: var(--cat-deportes);    color: #fff; }
+.badge[data-cat="musica"]      { background: var(--cat-musica);      color: #fff; }
+.badge[data-cat="television"]  { background: var(--cat-television);  color: #fff; }
+.badge[data-cat="famosos"]     { background: var(--cat-famosos);     color: #fff; }
+.badge[data-cat="viral"]       { background: var(--cat-viral);       color: #fff; }
+
+/* Punto/pulso de "EN DIRECTO" para última hora */
+.live-dot { width: .7em; height: .7em; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 0 rgba(255,255,255,.6); animation: pulse 1.4s infinite; }
+@keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)} 70%{box-shadow:0 0 0 .8em rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
+
+/* =====================================================================
+   ELEMENTOS DE MARCA — barra amarilla, rayas de velocidad, nº de slide
+   ===================================================================== */
+.bar-yellow { background: var(--c-yellow); }
+.rule { height: 6px; background: var(--c-yellow); border: none; }
+
+.speed-streaks { display: inline-flex; flex-direction: column; gap: 7px; }
+.speed-streaks i { display: block; height: 8px; background: var(--c-yellow); border-radius: 4px; transform: skewX(-20deg); }
+.speed-streaks i:nth-child(1){ width: 70px; }
+.speed-streaks i:nth-child(2){ width: 46px; }
+.speed-streaks i:nth-child(3){ width: 26px; }
+
+.slide-number {           /* nº grande de slide de noticia */
+  font-family: var(--f-display);
+  color: var(--c-yellow);
+  line-height: .8;
+  font-size: 360px;
+}
+
+.swipe {                  /* "DESLIZA PARA VERLAS →" */
+  display: inline-flex; align-items: center; gap: .6em;
+  font-family: var(--f-label); font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--c-yellow);
+}
+.swipe svg { width: 1.3em; height: 1.3em; }
+
+/* =====================================================================
+   RÓTULO (lower-third) — recurso gráfico para vídeo/portadas
+   ===================================================================== */
+.lower-third { display: inline-flex; flex-direction: column; }
+.lower-third .lt-name { font-family: var(--f-display); text-transform: uppercase; background: var(--c-yellow); color: var(--c-black); padding: .12em .5em; line-height: 1; align-self: flex-start; }
+.lower-third .lt-role { font-family: var(--f-text); font-weight: 600; background: var(--c-black); color: #fff; padding: .5em .7em; align-self: flex-start; }
+
+/* Utilidades de layout */
+.stack { display: flex; flex-direction: column; }
+.row   { display: flex; align-items: center; }
+.fill  { flex: 1; }
+
+</style>
+<style>
+  body{ background:#0D0D0D; color:#fff; font-family:var(--f-text); padding:60px; }
+  h2{ font-family:var(--f-display); text-transform:uppercase; color:var(--c-yellow); font-size:40px; margin:60px 0 24px; letter-spacing:.01em; }
+  h2:first-child{ margin-top:0; }
+  .grp{ display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+  .swatch{ display:flex; flex-direction:column; gap:8px; align-items:center; }
+  .swatch small{ color:var(--c-muted); font-family:var(--f-label); font-size:13px; letter-spacing:.06em; }
+  .panel{ background:var(--c-surface); border:1px solid var(--c-line); border-radius:16px; padding:32px; }
+  .bicon{ width:1.1em; height:1.1em; display:inline-block; } .bicon svg{ width:100%; height:100% }
+
+  /* Banner promocional reutilizable */
+  .promo{ width:1080px; height:320px; background:var(--c-yellow); color:#0D0D0D; border-radius:18px;
+     display:flex; align-items:center; gap:36px; padding:0 56px; overflow:hidden; position:relative; }
+  .promo .big{ font-family:var(--f-display); text-transform:uppercase; font-size:96px; line-height:.9; }
+  .promo .speed-streaks{ position:absolute; right:40px; top:50%; transform:translateY(-50%); }
+  .promo .speed-streaks i{ background:#0D0D0D; }
+  .promo--dark{ background:#0D0D0D; color:#fff; box-shadow:inset 0 0 0 4px var(--c-yellow); }
+  .promo--dark .big b{ color:var(--c-yellow); }
+  .promo--dark .speed-streaks i{ background:var(--c-yellow); }
+
+  /* Indicador de categoría (chip vertical para esquina) */
+  .cat-tab{ writing-mode:vertical-rl; transform:rotate(180deg); font-family:var(--f-label); font-weight:800;
+     letter-spacing:.18em; text-transform:uppercase; color:#0D0D0D; background:var(--c-yellow); padding:18px 10px; border-radius:8px; }
+
+  /* Rótulo sobre foto de muestra */
+  .lt-demo{ width:760px; height:240px; border-radius:14px; position:relative; overflow:hidden;
+     background:linear-gradient(160deg,#3a3a3a,#161616); display:flex; align-items:flex-end; padding:28px; }
+  .lower-third .lt-name{ font-size:46px; } .lower-third .lt-role{ font-size:24px; }
+</style>
+</head>
+<body>
+
+  <h2>1 · Etiquetas / Badges de categoría</h2>
+  <div class="panel grp">
+    <span class="badge" data-cat="ultima-hora"><span class="live-dot"></span>ÚLTIMA HORA</span>
+    <span class="badge" data-cat="exclusiva">EXCLUSIVA</span>
+    <span class="badge" data-cat="trending">TRENDING</span>
+    <span class="badge" data-cat="deportes">DEPORTES</span>
+    <span class="badge" data-cat="musica">MÚSICA</span>
+    <span class="badge" data-cat="television">TELEVISIÓN</span>
+    <span class="badge" data-cat="famosos">FAMOSOS</span>
+    <span class="badge" data-cat="viral">VIRAL</span>
+    <span class="badge badge--square">AMARILLO/NEGRO (DEFECTO)</span>
+    <span class="badge badge--outline">OUTLINE</span>
+  </div>
+
+  <h2>2 · Banners</h2>
+  <div class="panel grp" style="flex-direction:column;align-items:flex-start;gap:28px">
+    <div class="promo">
+      <div class="big">Noticias<br>sin rollos</div>
+      <span class="speed-streaks"><i></i><i></i><i></i></span>
+    </div>
+    <div class="promo promo--dark">
+      <div class="big">Las <b>5 caras</b><br>del día</div>
+      <span class="speed-streaks"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+
+  <h2>3 · Indicadores de categoría</h2>
+  <div class="panel grp">
+    <span class="cat-tab" style="background:var(--cat-deportes);color:#fff">Deportes</span>
+    <span class="cat-tab" style="background:var(--cat-television);color:#fff">Televisión</span>
+    <span class="cat-tab">Exclusiva</span>
+    <span class="badge" data-cat="musica"><span class="bicon"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M82 14a4 4 0 0 0-5-4L40 21a5 5 0 0 0-4 5v40a16 16 0 1 0 8 14V40l30-9v23a16 16 0 1 0 8 14z"/></svg></span>MÚSICA</span>
+    <span class="badge" data-cat="deportes"><span class="bicon"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7"><circle cx="50" cy="50" r="40"/><path d="M50 28l17 12-6 20H39l-6-20z" fill="currentColor" stroke="none"/></svg></span>DEPORTES</span>
+  </div>
+
+  <h2>4 · Rótulos (lower-thirds)</h2>
+  <div class="panel grp">
+    <div class="lt-demo">
+      <div class="lower-third">
+        <span class="lt-name">FEDE VALVERDE</span>
+        <span class="lt-role">Centrocampista · Real Madrid</span>
+      </div>
+    </div>
+    <div class="lt-demo">
+      <div class="lower-third">
+        <span class="lt-name">ISA PANTOJA</span>
+        <span class="lt-role">Televisión · Corazón</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

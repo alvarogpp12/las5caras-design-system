@@ -1,0 +1,15 @@
+{
+  "name": "las5caras-design-system",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Design system y plantillas de redes para Las 5 caras del día",
+  "scripts": {
+    "gen": "node scripts/gen-reels.mjs",
+    "export": "node scripts/export-png.mjs",
+    "serve": "python3 -m http.server 4555"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.0.0"
+  }
+}

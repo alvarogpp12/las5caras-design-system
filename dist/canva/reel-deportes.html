@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Reel — Deportes</title>
+<style>
+/* =====================================================================
+   LAS 5 CARAS DEL DÍA — Sistema de marca (CSS base)
+   Noticias rápidas. Resumidas. Sin rollos.
+   Importa este archivo en cualquier plantilla para heredar la marca.
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@600;700;800;900&display=swap');
+
+:root {
+  /* --- Color de marca --- */
+  --c-yellow:      #FFE000;
+  --c-yellow-deep: #FFC400;
+  --c-black:       #0D0D0D;
+  --c-pure-black:  #000000;
+  --c-white:       #FFFFFF;
+
+  /* --- Neutros --- */
+  --c-surface:  #141414;
+  --c-surface-2:#1F1F1F;
+  --c-line:     #2B2B2B;
+  --c-muted:    #B3B3B3;
+
+  /* --- Acentos por categoría --- */
+  --cat-ultima-hora: #FF2D2D;
+  --cat-exclusiva:   #FFE000;
+  --cat-trending:    #FF2E88;
+  --cat-deportes:    #00C24A;
+  --cat-musica:      #8B5CF6;
+  --cat-television:  #2E8BFF;
+  --cat-famosos:     #FF7A00;
+  --cat-viral:       #FF4D00;
+
+  /* --- Tipografía --- */
+  --f-display: 'Anton', 'Archivo Black', Impact, sans-serif;
+  --f-text:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --f-label:   'Montserrat', 'Inter', sans-serif;
+
+  /* --- Forma --- */
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-pill: 999px;
+
+  /* --- Efectos --- */
+  --scrim: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.65) 32%, rgba(0,0,0,0) 62%);
+  --shadow-text: 0 2px 8px rgba(0,0,0,.55);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { background: #555; }
+
+/* =====================================================================
+   LIENZO — cada plantilla vive dentro de .canvas con un tamaño nativo
+   ===================================================================== */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-black);
+  color: var(--c-white);
+  font-family: var(--f-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+.canvas--carousel { width: 1080px; height: 1350px; }
+.canvas--reel     { width: 1080px; height: 1920px; }
+.canvas--square   { width: 1080px; height: 1080px; }
+.canvas--yt       { width: 1280px; height: 720px; }
+.canvas--banner   { width: 2560px; height: 1440px; }
+
+/* =====================================================================
+   FOTOGRAFÍA (campo editable: data-field="foto")
+   ===================================================================== */
+.photo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  background-repeat: no-repeat;
+}
+.photo--top { background-position: center top; }
+.scrim { position: absolute; inset: 0; background: var(--scrim); pointer-events: none; }
+.scrim--full { background: linear-gradient(to top, rgba(0,0,0,.94) 8%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.55) 100%); }
+
+/* =====================================================================
+   TIPOGRAFÍA DE IMPACTO
+   ===================================================================== */
+.kicker {                 /* etiqueta corta sobre el titular */
+  font-family: var(--f-label);
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.headline {               /* TITULAR (campo: data-field="titular") */
+  font-family: var(--f-display);
+  font-weight: 400;       /* Anton ya es black */
+  line-height: .96;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+}
+.headline--tight { line-height: .9; }
+.subhead {                /* SUBTÍTULO (campo: data-field="subtitulo") */
+  font-family: var(--f-text);
+  font-weight: 500;
+  line-height: 1.28;
+  color: #EDEDED;
+}
+.date {                   /* FECHA (campo: data-field="fecha") */
+  font-family: var(--f-label);
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.text-shadow { text-shadow: var(--shadow-text); }
+.hl-yellow { color: var(--c-yellow); }
+.hl-black  { color: var(--c-black); }
+
+/* =====================================================================
+   BADGE / ETIQUETA DE CATEGORÍA  (recurso gráfico)
+   Uso: <span class="badge" data-cat="deportes">DEPORTES</span>
+   Por defecto = amarillo/negro (convención de marca). data-cat tiñe el fondo.
+   ===================================================================== */
+.badge {
+  display: inline-flex; align-items: center; gap: .5em;
+  font-family: var(--f-label);
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-black);
+  background: var(--c-yellow);
+  padding: .5em 1em;
+  border-radius: var(--r-pill);
+  line-height: 1;
+  white-space: nowrap;
+}
+.badge--square { border-radius: var(--r-sm); }
+.badge--outline { background: transparent; color: var(--c-yellow); box-shadow: inset 0 0 0 3px var(--c-yellow); }
+
+.badge[data-cat="ultima-hora"] { background: var(--cat-ultima-hora); color: #fff; }
+.badge[data-cat="exclusiva"]   { background: var(--cat-exclusiva);   color: var(--c-black); }
+.badge[data-cat="trending"]    { background: var(--cat-trending);    color: #fff; }
+.badge[data-cat="deportes"]    { background: var(--cat-deportes);    color: #fff; }
+.badge[data-cat="musica"]      { background: var(--cat-musica);      color: #fff; }
+.badge[data-cat="television"]  { background: var(--cat-television);  color: #fff; }
+.badge[data-cat="famosos"]     { background: var(--cat-famosos);     color: #fff; }
+.badge[data-cat="viral"]       { background: var(--cat-viral);       color: #fff; }
+
+/* Punto/pulso de "EN DIRECTO" para última hora */
+.live-dot { width: .7em; height: .7em; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 0 rgba(255,255,255,.6); animation: pulse 1.4s infinite; }
+@keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)} 70%{box-shadow:0 0 0 .8em rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
+
+/* =====================================================================
+   ELEMENTOS DE MARCA — barra amarilla, rayas de velocidad, nº de slide
+   ===================================================================== */
+.bar-yellow { background: var(--c-yellow); }
+.rule { height: 6px; background: var(--c-yellow); border: none; }
+
+.speed-streaks { display: inline-flex; flex-direction: column; gap: 7px; }
+.speed-streaks i { display: block; height: 8px; background: var(--c-yellow); border-radius: 4px; transform: skewX(-20deg); }
+.speed-streaks i:nth-child(1){ width: 70px; }
+.speed-streaks i:nth-child(2){ width: 46px; }
+.speed-streaks i:nth-child(3){ width: 26px; }
+
+.slide-number {           /* nº grande de slide de noticia */
+  font-family: var(--f-display);
+  color: var(--c-yellow);
+  line-height: .8;
+  font-size: 360px;
+}
+
+.swipe {                  /* "DESLIZA PARA VERLAS →" */
+  display: inline-flex; align-items: center; gap: .6em;
+  font-family: var(--f-label); font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--c-yellow);
+}
+.swipe svg { width: 1.3em; height: 1.3em; }
+
+/* =====================================================================
+   RÓTULO (lower-third) — recurso gráfico para vídeo/portadas
+   ===================================================================== */
+.lower-third { display: inline-flex; flex-direction: column; }
+.lower-third .lt-name { font-family: var(--f-display); text-transform: uppercase; background: var(--c-yellow); color: var(--c-black); padding: .12em .5em; line-height: 1; align-self: flex-start; }
+.lower-third .lt-role { font-family: var(--f-text); font-weight: 600; background: var(--c-black); color: #fff; padding: .5em .7em; align-self: flex-start; }
+
+/* Utilidades de layout */
+.stack { display: flex; flex-direction: column; }
+.row   { display: flex; align-items: center; }
+.fill  { flex: 1; }
+
+</style>
+<style>
+  body{background:#555}
+  .reel{background:#0D0D0D}
+  .reel .photo-ph{position:absolute;inset:0;background:linear-gradient(160deg,#2b2b2b,#141414);
+     display:flex;align-items:center;justify-content:center;font-family:var(--f-label);font-weight:800;color:#4f4f4f;font-size:64px}
+  .reel .logo{position:absolute;top:60px;left:64px;width:320px;height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.5))}
+  .reel .scrim{background:linear-gradient(to top,rgba(0,0,0,.95) 6%,rgba(0,0,0,.55) 34%,rgba(0,0,0,0) 60%)}
+  .reel .content{position:absolute;left:64px;right:64px;bottom:130px}
+  .reel .badge{font-size:34px;margin-bottom:30px}
+  .reel .badge .bicon{width:1.15em;height:1.15em;display:inline-block}
+  .reel .badge .bicon svg{width:100%;height:100%;display:block}
+  .reel .badge .live-dot{display:inline-block}
+  .reel .headline{font-size:118px;color:#fff;text-shadow:var(--shadow-text)}
+  .reel .subhead{font-size:42px;margin-top:30px;max-width:880px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+</style></head>
+<body>
+
+<section class="canvas canvas--reel reel" data-document-role="page" data-label="Deportes">
+  <div class="photo-ph">FOTO</div>
+  <div class="photo" data-field="foto" style="display:none"></div>
+  <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-label="Las 5 caras del día">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;display=swap');
+      .disp  { font-family:'Anton','Archivo Black',Impact,sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Base dinámica negra (plataforma del 5) -->
+  <g transform="skewX(-12)">
+    <rect x="150" y="150" width="430" height="150" rx="10" fill="#000"/>
+  </g>
+
+  <!-- LAS -->
+  <g transform="translate(150 120) skewX(-12)">
+    <text x="0" y="0" class="disp" font-size="86"
+          fill="#fff" stroke="#000" stroke-width="12" paint-order="stroke"
+          style="text-transform:uppercase">Las</text>
+  </g>
+
+  <!-- 5 -->
+  <g transform="translate(150 300) skewX(-12)">
+    <text x="0" y="0" class="disp" font-size="270"
+          fill="#FFE000" stroke="#000" stroke-width="16" paint-order="stroke">5</text>
+  </g>
+
+  <!-- CARAS -->
+  <g transform="translate(310 250) skewX(-12)">
+    <text x="0" y="0" class="disp" font-size="150"
+          fill="#fff" stroke="#000" stroke-width="14" paint-order="stroke"
+          style="text-transform:lowercase">caras</text>
+  </g>
+
+  <!-- Rayas de velocidad -->
+  <g transform="skewX(-20)" fill="#FFE000">
+    <rect x="690" y="150" width="120" height="14" rx="7"/>
+    <rect x="690" y="178" width="84"  height="14" rx="7"/>
+    <rect x="690" y="206" width="52"  height="14" rx="7"/>
+  </g>
+
+  <!-- DEL DÍA -->
+  <g transform="translate(360 360) skewX(-12)">
+    <rect x="-12" y="-58" width="250" height="72" rx="12" fill="#000"/>
+    <text x="14" y="-6" class="disp" font-size="62"
+          fill="#FFE000" style="text-transform:lowercase">del día</text>
+  </g>
+</svg>
+  <div class="scrim"></div>
+  <div class="content">
+    <span class="badge" data-cat="deportes" data-field="categoria"><span class="bicon"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7"><circle cx="50" cy="50" r="40"/><path d="M50 28l17 12-6 20H39l-6-20z" fill="currentColor" stroke="none"/></svg></span>DEPORTES</span>
+    <h1 class="headline" data-field="titular">PELEA VALVERDE Y TCHOUAMÉNI</h1>
+    <p class="subhead" data-field="subtitulo">Lo último en el Real Madrid no tiene que ver con el césped… sino con el vestuario.</p>
+  </div>
+</section>
+</body></html>

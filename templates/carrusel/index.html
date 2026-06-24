@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Las 5 caras del día — Carrusel diario</title>
+<link rel="stylesheet" href="../../brand/brand.css">
+<style>
+  /* ---- Estilos específicos del carrusel ---- */
+  .c-cover { background:#0D0D0D; padding:90px 80px; }
+  .c-cover .top { justify-content:space-between; align-items:flex-start; }
+  .c-cover .logo { width:520px; height:auto; display:block; }
+  .c-cover .date { color:var(--c-yellow); font-size:52px; }
+  .c-cover .date b { color:#fff; }
+
+  .faces { position:absolute; left:80px; right:80px; top:430px; display:grid;
+           grid-template-columns:repeat(5,1fr); gap:16px; }
+  .faces .face { position:relative; aspect-ratio:3/4; border-radius:14px; overflow:hidden;
+                 background:linear-gradient(160deg,#2b2b2b,#171717); box-shadow:0 0 0 4px #000; }
+  .faces .face .photo { background-position:center top; }
+  .faces .face span { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+                      font-family:var(--f-label); font-weight:800; color:#5a5a5a; font-size:30px; }
+
+  .c-cover .pitch { position:absolute; left:80px; right:80px; top:980px;
+                    font-family:var(--f-display); text-transform:uppercase; line-height:.92;
+                    font-size:96px; color:#fff; }
+  .c-cover .pitch b { color:var(--c-yellow); }
+  .c-cover .footer { position:absolute; left:0; right:0; bottom:70px; flex-direction:column; align-items:center; gap:24px; }
+  .c-cover .footer .rule { width:300px; }
+  .c-cover .swipe { font-size:34px; }
+
+  /* ---- Slide de noticia ---- */
+  .c-news { background:#0D0D0D; }
+  .c-news .photo { left:46%; }
+  .c-news .photo-ph { position:absolute; top:0; bottom:0; left:46%; right:0;
+      background:linear-gradient(160deg,#2b2b2b,#141414); display:flex; align-items:center; justify-content:center;
+      font-family:var(--f-label); font-weight:800; color:#4f4f4f; font-size:40px; }
+  .c-news .side-scrim { position:absolute; inset:0; background:linear-gradient(90deg,#0D0D0D 38%,rgba(13,13,13,.0) 70%); }
+  .c-news .pad { position:absolute; left:80px; right:46%; top:90px; }
+  .c-news .kicker { color:var(--c-yellow); font-size:34px; margin-bottom:22px; }
+  .c-news .headline { font-size:96px; color:#fff; }
+  .c-news .subhead { font-size:40px; margin-top:34px; max-width:560px; }
+  .c-news .num { position:absolute; left:70px; bottom:40px; font-family:var(--f-display);
+                 color:var(--c-yellow); font-size:520px; line-height:.7; }
+  .c-news .brandtag { position:absolute; right:60px; bottom:54px; font-family:var(--f-label);
+                      font-weight:800; letter-spacing:.1em; color:#fff; opacity:.85; font-size:26px; text-transform:uppercase; }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1 — PORTADA ============ -->
+<section class="canvas canvas--carousel c-cover" data-document-role="page" data-label="Portada">
+  <div class="row top">
+    <img class="logo" src="../../assets/logo/logo.svg" alt="Las 5 caras del día">
+    <div class="date" data-field="fecha">8 <b>MAYO</b> 2026</div>
+  </div>
+
+  <div class="faces">
+    <div class="face"><div class="photo" data-field="foto-1"></div><span>1</span></div>
+    <div class="face"><div class="photo" data-field="foto-2"></div><span>2</span></div>
+    <div class="face"><div class="photo" data-field="foto-3"></div><span>3</span></div>
+    <div class="face"><div class="photo" data-field="foto-4"></div><span>4</span></div>
+    <div class="face"><div class="photo" data-field="foto-5"></div><span>5</span></div>
+  </div>
+
+  <div class="pitch" data-field="titular">LAS <b>5 CARAS</b> QUE HOY<br>DAN QUE HABLAR</div>
+
+  <div class="row footer">
+    <hr class="rule">
+    <div class="swipe">Desliza para verlas
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDES 2–5 — NOTICIA (plantilla repetible) ============ -->
+<section class="canvas canvas--carousel c-news" data-document-role="page" data-label="Noticia 1">
+  <div class="photo-ph">FOTO</div>
+  <div class="photo" data-field="foto" style="display:none"></div>
+  <div class="side-scrim"></div>
+  <div class="pad">
+    <div class="kicker" data-field="categoria">FEDE VALVERDE</div>
+    <h1 class="headline" data-field="titular">UN TRAUMATISMO TRAS UNA BRUTAL PELEA</h1>
+    <p class="subhead" data-field="subtitulo">Tras las pruebas de los Servicios Médicos del Real Madrid se le ha diagnosticado un traumatismo craneoencefálico, a causa de una pelea con Tchouaméni.</p>
+  </div>
+  <div class="num" data-field="numero">1</div>
+  <div class="brandtag">Las 5 caras del día</div>
+</section>
+
+<section class="canvas canvas--carousel c-news" data-document-role="page" data-label="Noticia 2">
+  <div class="photo-ph">FOTO</div>
+  <div class="side-scrim"></div>
+  <div class="pad">
+    <div class="kicker" data-field="categoria">NOMBRE / TEMA</div>
+    <h1 class="headline" data-field="titular">TITULAR DE LA SEGUNDA CARA DEL DÍA</h1>
+    <p class="subhead" data-field="subtitulo">Resumen breve y directo de la noticia. Sin rollos: lo justo para entenderlo en dos segundos.</p>
+  </div>
+  <div class="num" data-field="numero">2</div>
+  <div class="brandtag">Las 5 caras del día</div>
+</section>
+
+<section class="canvas canvas--carousel c-news" data-document-role="page" data-label="Noticia 3">
+  <div class="photo-ph">FOTO</div>
+  <div class="side-scrim"></div>
+  <div class="pad">
+    <div class="kicker" data-field="categoria">NOMBRE / TEMA</div>
+    <h1 class="headline" data-field="titular">TITULAR DE LA TERCERA CARA DEL DÍA</h1>
+    <p class="subhead" data-field="subtitulo">Resumen breve y directo de la noticia.</p>
+  </div>
+  <div class="num" data-field="numero">3</div>
+  <div class="brandtag">Las 5 caras del día</div>
+</section>
+
+<section class="canvas canvas--carousel c-news" data-document-role="page" data-label="Noticia 4">
+  <div class="photo-ph">FOTO</div>
+  <div class="side-scrim"></div>
+  <div class="pad">
+    <div class="kicker" data-field="categoria">NOMBRE / TEMA</div>
+    <h1 class="headline" data-field="titular">TITULAR DE LA CUARTA CARA DEL DÍA</h1>
+    <p class="subhead" data-field="subtitulo">Resumen breve y directo de la noticia.</p>
+  </div>
+  <div class="num" data-field="numero">4</div>
+  <div class="brandtag">Las 5 caras del día</div>
+</section>
+
+<section class="canvas canvas--carousel c-news" data-document-role="page" data-label="Noticia 5">
+  <div class="photo-ph">FOTO</div>
+  <div class="side-scrim"></div>
+  <div class="pad">
+    <div class="kicker" data-field="categoria">NOMBRE / TEMA</div>
+    <h1 class="headline" data-field="titular">TITULAR DE LA QUINTA CARA DEL DÍA</h1>
+    <p class="subhead" data-field="subtitulo">Resumen breve y directo de la noticia.</p>
+  </div>
+  <div class="num" data-field="numero">5</div>
+  <div class="brandtag">Las 5 caras del día</div>
+</section>
+
+</body>
+</html>

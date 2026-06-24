@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recursos gráficos — Las 5 caras del día</title>
+<link rel="stylesheet" href="../../brand/brand.css">
+<style>
+  body{ background:#0D0D0D; color:#fff; font-family:var(--f-text); padding:60px; }
+  h2{ font-family:var(--f-display); text-transform:uppercase; color:var(--c-yellow); font-size:40px; margin:60px 0 24px; letter-spacing:.01em; }
+  h2:first-child{ margin-top:0; }
+  .grp{ display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+  .swatch{ display:flex; flex-direction:column; gap:8px; align-items:center; }
+  .swatch small{ color:var(--c-muted); font-family:var(--f-label); font-size:13px; letter-spacing:.06em; }
+  .panel{ background:var(--c-surface); border:1px solid var(--c-line); border-radius:16px; padding:32px; }
+  .bicon{ width:1.1em; height:1.1em; display:inline-block; } .bicon svg{ width:100%; height:100% }
+
+  /* Banner promocional reutilizable */
+  .promo{ width:1080px; height:320px; background:var(--c-yellow); color:#0D0D0D; border-radius:18px;
+     display:flex; align-items:center; gap:36px; padding:0 56px; overflow:hidden; position:relative; }
+  .promo .big{ font-family:var(--f-display); text-transform:uppercase; font-size:96px; line-height:.9; }
+  .promo .speed-streaks{ position:absolute; right:40px; top:50%; transform:translateY(-50%); }
+  .promo .speed-streaks i{ background:#0D0D0D; }
+  .promo--dark{ background:#0D0D0D; color:#fff; box-shadow:inset 0 0 0 4px var(--c-yellow); }
+  .promo--dark .big b{ color:var(--c-yellow); }
+  .promo--dark .speed-streaks i{ background:var(--c-yellow); }
+
+  /* Indicador de categoría (chip vertical para esquina) */
+  .cat-tab{ writing-mode:vertical-rl; transform:rotate(180deg); font-family:var(--f-label); font-weight:800;
+     letter-spacing:.18em; text-transform:uppercase; color:#0D0D0D; background:var(--c-yellow); padding:18px 10px; border-radius:8px; }
+
+  /* Rótulo sobre foto de muestra */
+  .lt-demo{ width:760px; height:240px; border-radius:14px; position:relative; overflow:hidden;
+     background:linear-gradient(160deg,#3a3a3a,#161616); display:flex; align-items:flex-end; padding:28px; }
+  .lower-third .lt-name{ font-size:46px; } .lower-third .lt-role{ font-size:24px; }
+</style>
+</head>
+<body>
+
+  <h2>1 · Etiquetas / Badges de categoría</h2>
+  <div class="panel grp">
+    <span class="badge" data-cat="ultima-hora"><span class="live-dot"></span>ÚLTIMA HORA</span>
+    <span class="badge" data-cat="exclusiva">EXCLUSIVA</span>
+    <span class="badge" data-cat="trending">TRENDING</span>
+    <span class="badge" data-cat="deportes">DEPORTES</span>
+    <span class="badge" data-cat="musica">MÚSICA</span>
+    <span class="badge" data-cat="television">TELEVISIÓN</span>
+    <span class="badge" data-cat="famosos">FAMOSOS</span>
+    <span class="badge" data-cat="viral">VIRAL</span>
+    <span class="badge badge--square">AMARILLO/NEGRO (DEFECTO)</span>
+    <span class="badge badge--outline">OUTLINE</span>
+  </div>
+
+  <h2>2 · Banners</h2>
+  <div class="panel grp" style="flex-direction:column;align-items:flex-start;gap:28px">
+    <div class="promo">
+      <div class="big">Noticias<br>sin rollos</div>
+      <span class="speed-streaks"><i></i><i></i><i></i></span>
+    </div>
+    <div class="promo promo--dark">
+      <div class="big">Las <b>5 caras</b><br>del día</div>
+      <span class="speed-streaks"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+
+  <h2>3 · Indicadores de categoría</h2>
+  <div class="panel grp">
+    <span class="cat-tab" style="background:var(--cat-deportes);color:#fff">Deportes</span>
+    <span class="cat-tab" style="background:var(--cat-television);color:#fff">Televisión</span>
+    <span class="cat-tab">Exclusiva</span>
+    <span class="badge" data-cat="musica"><span class="bicon"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M82 14a4 4 0 0 0-5-4L40 21a5 5 0 0 0-4 5v40a16 16 0 1 0 8 14V40l30-9v23a16 16 0 1 0 8 14z"/></svg></span>MÚSICA</span>
+    <span class="badge" data-cat="deportes"><span class="bicon"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7"><circle cx="50" cy="50" r="40"/><path d="M50 28l17 12-6 20H39l-6-20z" fill="currentColor" stroke="none"/></svg></span>DEPORTES</span>
+  </div>
+
+  <h2>4 · Rótulos (lower-thirds)</h2>
+  <div class="panel grp">
+    <div class="lt-demo">
+      <div class="lower-third">
+        <span class="lt-name">FEDE VALVERDE</span>
+        <span class="lt-role">Centrocampista · Real Madrid</span>
+      </div>
+    </div>
+    <div class="lt-demo">
+      <div class="lower-third">
+        <span class="lt-name">ISA PANTOJA</span>
+        <span class="lt-role">Televisión · Corazón</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
