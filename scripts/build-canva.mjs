@@ -9,17 +9,18 @@ const dist = join(root, 'dist', 'canva');
 mkdirSync(dist, { recursive: true });
 
 const brandCss = readFileSync(join(root, 'brand', 'brand.css'), 'utf8');
-let logoSvg = readFileSync(join(root, 'assets', 'logo', 'logo.svg'), 'utf8')
-  .replace(/<\?xml[^>]*\?>/, '').trim();
-// Inyecta class="logo" en el <svg> raíz del logo
-logoSvg = logoSvg.replace(/<svg /, '<svg class="logo" ');
+
+// El logo se referencia como PNG hospedado: los <img> rasterizados importan
+// fielmente a Canva, mientras que el texto SVG con contornos se degrada.
+const RAW = 'https://raw.githubusercontent.com/alvarogpp12/las5caras-design-system/master';
+const LOGO_PNG = `${RAW}/assets/logo/logo.png`;
 
 function inline(html) {
   return html
     // CSS -> <style>
     .replace(/<link[^>]*href="[^"]*brand\.css"[^>]*>/i, `<style>\n${brandCss}\n</style>`)
-    // <img ... logo.svg ...> -> SVG inline
-    .replace(/<img[^>]*src="[^"]*logo\.svg"[^>]*>/gi, logoSvg);
+    // logo.svg -> PNG hospedado (mantiene el <img>)
+    .replace(/(["'])[^"']*logo\.svg\1/gi, `$1${LOGO_PNG}$1`);
 }
 
 const targets = [

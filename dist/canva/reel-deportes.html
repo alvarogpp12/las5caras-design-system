@@ -209,53 +209,7 @@ body { background: #555; }
 <section class="canvas canvas--reel reel" data-document-role="page" data-label="Deportes">
   <div class="photo-ph">FOTO</div>
   <div class="photo" data-field="foto" style="display:none"></div>
-  <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-label="Las 5 caras del día">
-  <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;display=swap');
-      .disp  { font-family:'Anton','Archivo Black',Impact,sans-serif; }
-    </style>
-  </defs>
-
-  <!-- Base dinámica negra (plataforma del 5) -->
-  <g transform="skewX(-12)">
-    <rect x="150" y="150" width="430" height="150" rx="10" fill="#000"/>
-  </g>
-
-  <!-- LAS -->
-  <g transform="translate(150 120) skewX(-12)">
-    <text x="0" y="0" class="disp" font-size="86"
-          fill="#fff" stroke="#000" stroke-width="12" paint-order="stroke"
-          style="text-transform:uppercase">Las</text>
-  </g>
-
-  <!-- 5 -->
-  <g transform="translate(150 300) skewX(-12)">
-    <text x="0" y="0" class="disp" font-size="270"
-          fill="#FFE000" stroke="#000" stroke-width="16" paint-order="stroke">5</text>
-  </g>
-
-  <!-- CARAS -->
-  <g transform="translate(310 250) skewX(-12)">
-    <text x="0" y="0" class="disp" font-size="150"
-          fill="#fff" stroke="#000" stroke-width="14" paint-order="stroke"
-          style="text-transform:lowercase">caras</text>
-  </g>
-
-  <!-- Rayas de velocidad -->
-  <g transform="skewX(-20)" fill="#FFE000">
-    <rect x="690" y="150" width="120" height="14" rx="7"/>
-    <rect x="690" y="178" width="84"  height="14" rx="7"/>
-    <rect x="690" y="206" width="52"  height="14" rx="7"/>
-  </g>
-
-  <!-- DEL DÍA -->
-  <g transform="translate(360 360) skewX(-12)">
-    <rect x="-12" y="-58" width="250" height="72" rx="12" fill="#000"/>
-    <text x="14" y="-6" class="disp" font-size="62"
-          fill="#FFE000" style="text-transform:lowercase">del día</text>
-  </g>
-</svg>
+  <img class="logo" src="https://raw.githubusercontent.com/alvarogpp12/las5caras-design-system/master/assets/logo/logo.png" alt="Las 5 caras del día">
   <div class="scrim"></div>
   <div class="content">
     <span class="badge" data-cat="deportes" data-field="categoria"><span class="bicon"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7"><circle cx="50" cy="50" r="40"/><path d="M50 28l17 12-6 20H39l-6-20z" fill="currentColor" stroke="none"/></svg></span>DEPORTES</span>

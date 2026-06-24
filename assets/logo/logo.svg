@@ -8,19 +8,19 @@
 
   <!-- Base dinámica negra (plataforma del 5) -->
   <g transform="skewX(-12)">
-    <rect x="150" y="150" width="430" height="150" rx="10" fill="#000"/>
+    <rect x="180" y="168" width="410" height="140" rx="10" fill="#000"/>
   </g>
 
   <!-- LAS -->
-  <g transform="translate(150 120) skewX(-12)">
-    <text x="0" y="0" class="disp" font-size="86"
-          fill="#fff" stroke="#000" stroke-width="12" paint-order="stroke"
+  <g transform="translate(118 96) skewX(-12)">
+    <text x="0" y="0" class="disp" font-size="74"
+          fill="#fff" stroke="#000" stroke-width="11" paint-order="stroke"
           style="text-transform:uppercase">Las</text>
   </g>
 
   <!-- 5 -->
-  <g transform="translate(150 300) skewX(-12)">
-    <text x="0" y="0" class="disp" font-size="270"
+  <g transform="translate(190 308) skewX(-12)">
+    <text x="0" y="0" class="disp" font-size="276"
           fill="#FFE000" stroke="#000" stroke-width="16" paint-order="stroke">5</text>
   </g>
 
